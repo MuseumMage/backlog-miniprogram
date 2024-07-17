@@ -1,17 +1,17 @@
 .container {
-  width: 100%;
+  width: var(--full-view-size);
   height: max-content;
-  padding: 10px;
+  padding: var(--detail-cell-padding);
 }
 
 .header {
-  width: 100%;
-  margin-bottom: 10px;
+  width: var(--full-view-size);
+  margin-bottom: var(--detail-cell-padding);
 }
 
 .row {
-  width: 100%;
+  width: var(--full-view-size);
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: var(--detail-cell-padding);
 }
