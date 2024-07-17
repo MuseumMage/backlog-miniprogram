@@ -1,0 +1,5 @@
+
+<view class="container empty">
+  <text>张博测试</text>
+  <footer></footer>
+</view>
