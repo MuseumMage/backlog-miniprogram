@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="header">
+    <text>
+      未命名记录
+    </text>
+  </view>
+  <view class="row" wx:for="{{defaultListData}}" wx:for-item="data" wx:key="script">
+    <text class="left">{{data.script}}</text>
+    <text class="right">{{data.content}}</text>
+  </view>
+</view>
