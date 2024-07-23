@@ -1,4 +1,5 @@
 .container {
+  display: flex;
   width: var(--full-view-size);
   height: max-content;
   padding: var(--detail-cell-padding);
@@ -6,12 +7,26 @@
 
 .header {
   width: var(--full-view-size);
-  margin-bottom: var(--detail-cell-padding);
+  margin-top: var(--detail-cell-padding);
+}
+
+.cell {
+  width: var(--full-view-size);
 }
 
 .row {
   width: var(--full-view-size);
   display: flex;
   justify-content: space-between;
-  margin-bottom: var(--detail-cell-padding);
+  margin-top: var(--detail-cell-padding);
+}
+
+.divider {
+  width: var(--full-view-size);
+  height: 1px;
+  /* 分割线的高度 */
+  background-color: #e0e0e0;
+  /* 分割线的颜色 */
+  margin: 10px 0;
+  /* 上下的间距 */
 }
