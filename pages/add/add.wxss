@@ -21,6 +21,23 @@
   margin-top: var(--detail-cell-padding);
 }
 
+.left{
+  display: inline-block;
+  white-space: nowrap; /* 防止文本换行 */
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end; /* 内容靠右对齐 */
+  width: 100%; /* 确保容器宽度为100%，或根据需要调整 */
+}
+
+.right-input {
+  width: 100%;
+  float: right;
+  text-align: right; /* 使文本从右向左对齐 */
+}
+
 .divider {
   width: var(--full-view-size);
   height: 1px;

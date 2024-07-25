@@ -1,13 +1,20 @@
 <view class="container">
   <view class="header">
     <view>
-      未命名记录
+      待更改
     </view>
   </view>
   <view class="cell" wx:for="{{defaultListData}}" wx:for-item="data" wx:key="script">
     <view class="row">
       <view class="left">{{data.script}}</view>
-      <view class="right">{{data.content}}</view>
+      <view class="right">
+        <input class="right-input" wx:if="{{data.type == 'input'}}" placeholder="{{data.content}}"></input>
+        <view class="right-text" wx:elif="{{data.type == 'text'}}">{{data.content}}</view>
+        <image class="right-image" wx:elif="{{data.type == 'image'}}" src="../../images/add.png" mode="aspectFit"></image>
+        <checkbox class="right-checkbox" wx:elif="{{data.type == 'checkbox'}}"></checkbox>
+        <label class="right-label" wx:elif="{{data.type == 'label'}}"></label>
+        <icon class="right-icon" wx:elif="{{data.type == 'icon'}}" type="success"></icon>
+      </view>
     </view>
     <view class="divider"></view>
   </view>

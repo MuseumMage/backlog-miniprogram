@@ -8,11 +8,12 @@ Page({
     defaultListData: [
       {script: '待办事项', content: "请输入", type: "input"},
       {script: '创建时间', content: "2024/07/13", type: "text"},
-      {script: '截止日期', content: "图片1", type: "image"},
+      {script: '截止日期', content: "图片1", type: "icon"},
       {script: '距离截止日', content: "提交后自动填写", type: "text"},
       {script: '是否已完成', content: "括号", type: "checkbox"},
-      {script: '优先级', content: "图片2", type: "image"},
-      {script: '执行人', content: "图片3", type: "image"},
+      {script: '标签', content: "图片2", type: "icon"},
+      {script: '优先级', content: "图片2", type: "icon"},
+      {script: '执行人', content: "图片3", type: "icon"},
     ]
   },
 
