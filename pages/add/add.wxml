@@ -8,14 +8,17 @@
     <view class="row">
       <view class="left">{{data.script}}</view>
       <view class="right">
-        <input class="right-input" wx:if="{{data.type == 'input'}}" placeholder="{{data.content}}"></input>
+        <t-input class="right-input" wx:if="{{data.type == 'input'}}" placeholder="请输入" borderless="{{true}}" placeholder-style="color: #888; font: 14px;" align="right"></t-input>
         <view class="right-text" wx:elif="{{data.type == 'text'}}">{{data.content}}</view>
         <image class="right-image" wx:elif="{{data.type == 'image'}}" src="../../images/add.png" mode="aspectFit"></image>
-        <checkbox class="right-checkbox" wx:elif="{{data.type == 'checkbox'}}"></checkbox>
-        <label class="right-label" wx:elif="{{data.type == 'label'}}"></label>
+        <t-checkbox class="right-checkbox" wx:elif="{{data.type == 'checkbox'}}" icon="rectangle"></t-checkbox>
         <icon class="right-icon" wx:elif="{{data.type == 'icon'}}" type="success"></icon>
+        <view class="right-calendar" wx:elif="{{data.type == 'calendar'}}">
+          <t-calendar visible="{{calendarData.visible}}" bind:confirm="handleCalendarConfirm" bind:close="onCalendarClose" />
+          <view bind:tap="onCalendarClick" data-source="{{data.script}}">{{data.content}}</view>
+        </view>
       </view>
     </view>
-    <view class="divider"></view>
+    <t-divider></t-divider>
   </view>
 </view>

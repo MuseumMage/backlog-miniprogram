@@ -14,6 +14,4 @@ page {
   --button-size: 16vw;
   --button-color: #353535;
   --button-icon-size: 6vw;
-  --detail-cell-padding: 15px;
-  --full-view-size: 100%
 }

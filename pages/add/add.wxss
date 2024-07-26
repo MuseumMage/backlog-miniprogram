@@ -1,8 +1,19 @@
+page {
+  /* tdesign value */
+  --td-input-vertical-padding: 0px;
+  --td-checkbox-vertical-padding: 0px;
+  --td-checkbox-icon-checked-color: green;
+
+  /* current page value */
+  --detail-cell-padding: 15px;
+  --full-view-size: 100%;
+}
+
 .container {
   display: flex;
   width: var(--full-view-size);
   height: max-content;
-  padding: var(--detail-cell-padding);
+  padding: 30px;
 }
 
 .header {
@@ -21,29 +32,20 @@
   margin-top: var(--detail-cell-padding);
 }
 
-.left{
+.left {
   display: inline-block;
-  white-space: nowrap; /* 防止文本换行 */
+  white-space: nowrap;
+  /* 防止文本换行 */
 }
 
 .right {
   display: flex;
-  justify-content: flex-end; /* 内容靠右对齐 */
-  width: 100%; /* 确保容器宽度为100%，或根据需要调整 */
-}
-
-.right-input {
+  justify-content: flex-end;
+  /* 内容靠右对齐 */
   width: 100%;
-  float: right;
-  text-align: right; /* 使文本从右向左对齐 */
+  /* 确保容器宽度为100%，或根据需要调整 */
 }
 
-.divider {
-  width: var(--full-view-size);
-  height: 1px;
-  /* 分割线的高度 */
-  background-color: #e0e0e0;
-  /* 分割线的颜色 */
-  margin: 10px 0;
-  /* 上下的间距 */
+.right-calendar {
+  color: #888;
 }
