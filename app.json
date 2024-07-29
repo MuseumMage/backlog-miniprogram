@@ -8,7 +8,7 @@
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "Todo set titles",
     "navigationBarBackgroundColor": "#ffffff"
   },
   "componentFramework": "glass-easel",

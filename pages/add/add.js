@@ -10,8 +10,10 @@ Page({
       createdDate: '',
       expirationDate: '点击选择日期',
       currentCalendar: '',
+      createDateInNum: null,
+      expirationDateInNum: null,
     },
-
+    title: '未命名',
     defaultListData: [
       { script: '待办事项', content: "请输入", type: "input" },
       { script: '创建时间', content: "", type: "calendar" },
@@ -22,6 +24,7 @@ Page({
       { script: '优先级', content: "图片2", type: "icon" }
     ],
 
+    // 提交存储数据的data
     formData: {
       id: '',
       title: '',
@@ -33,8 +36,8 @@ Page({
     }
   },
 
-  onCalendarClick(e) {
-    console.log("onCalendarClick");
+  handleCalendarClick(e) {
+    console.log("handleCalendarClick");
     this.setData({
       'calendarData.visible': true,
       'calendarData.currentCalendar': e.currentTarget.dataset.source
@@ -43,9 +46,13 @@ Page({
 
   handleInputBlur(e) {
     const { value } = e.detail;
-    this.setData({
-      'formData.title': value
-    });
+    this.data.formData.title = value;
+    // 显示title
+    if (value === '') {
+      this.setData({ 'title': '未命名' })
+    } else {
+      this.setData({ 'title': value })
+    }
   },
 
   handleCalendarConfirm(e) {
@@ -56,24 +63,32 @@ Page({
     };
 
     if (this.data.calendarData.currentCalendar === '创建时间') {
-      this.setData({
-        'calendarData.createdDate': format(value),
-      })
+      // this.data.calendarData.createDateInNum = value;
+      this.data.calendarData.createdDate = format(value);
       this.updateCalendarData('创建时间', this.data.calendarData.createdDate);
     } else if (this.data.calendarData.currentCalendar === '截止日期') {
-      this.setData({
-        'calendarData.expirationDate': format(value)
-      });
+      this.data.calendarData.expirationDateInNum = value;
+      this.data.calendarData.expirationDate = format(value);
       this.updateCalendarData('截止日期', this.data.calendarData.expirationDate);
+    }
+
+    // 计算截止日期
+    if (!!this.data.calendarData.expirationDateInNum) {
+      const currentDateInNum = new Date().getTime();
+      const msInExpiration = this.data.calendarData.expirationDateInNum - currentDateInNum;
+      const dayInExpiration = Math.ceil(msInExpiration / (1000 * 60 * 60 * 24));
+      const target = this.data.defaultListData.find(item => item.script === '距离截止日');
+      if (!!target) {
+        target.content = dayInExpiration;
+        this.setData({ 'defaultListData': this.data.defaultListData });
+      }
     }
   },
 
   handleIsDone(e) {
     const { checked } = e.detail;
     console.log(checked);
-    this.setData({
-      'formData.isDone': checked
-    })
+    this.data.formData.isDone = checked;
   },
 
   onCalendarClose({ detail }) {

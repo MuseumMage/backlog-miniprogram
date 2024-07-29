@@ -19,6 +19,9 @@ page {
 .header {
   width: var(--full-view-size);
   margin-top: var(--detail-cell-padding);
+  margin-bottom: 20pt;
+  font-size: 17pt;
+  color: var(--td-brand-color, #0052d9);
 }
 
 .cell {
@@ -46,6 +49,6 @@ page {
   /* 确保容器宽度为100%，或根据需要调整 */
 }
 
-.right-calendar {
+.right-calendar, .right-text {
   color: #888;
 }

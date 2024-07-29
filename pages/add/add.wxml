@@ -1,9 +1,5 @@
 <view class="container">
-  <view class="header">
-    <view>
-      待更改
-    </view>
-  </view>
+  <view class="header">{{title}}</view>
   <view class="cell" wx:for="{{defaultListData}}" wx:for-item="data" wx:key="script">
     <view class="row">
       <view class="left">{{data.script}}</view>
@@ -15,7 +11,7 @@
         <icon class="right-icon" wx:elif="{{data.type == 'icon'}}" type="success"></icon>
         <view class="right-calendar" wx:elif="{{data.type == 'calendar'}}">
           <t-calendar visible="{{calendarData.visible}}" bind:confirm="handleCalendarConfirm" bind:close="onCalendarClose" />
-          <view bind:tap="onCalendarClick" data-source="{{data.script}}">{{data.content}}</view>
+          <view bind:tap="handleCalendarClick" data-source="{{data.script}}">{{data.content}}</view>
         </view>
       </view>
     </view>
