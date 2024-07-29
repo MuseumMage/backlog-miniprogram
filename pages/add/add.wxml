@@ -8,10 +8,10 @@
     <view class="row">
       <view class="left">{{data.script}}</view>
       <view class="right">
-        <t-input class="right-input" wx:if="{{data.type == 'input'}}" placeholder="请输入" borderless="{{true}}" placeholder-style="color: #888; font: 14px;" align="right"></t-input>
+        <t-input class="right-input" wx:if="{{data.type == 'input'}}" placeholder="请输入" borderless="{{true}}" placeholder-style="color: #888; font-size: 16px;" align="right" bindblur="handleInputBlur"></t-input>
         <view class="right-text" wx:elif="{{data.type == 'text'}}">{{data.content}}</view>
         <image class="right-image" wx:elif="{{data.type == 'image'}}" src="../../images/add.png" mode="aspectFit"></image>
-        <t-checkbox class="right-checkbox" wx:elif="{{data.type == 'checkbox'}}" icon="rectangle"></t-checkbox>
+        <t-checkbox class="right-checkbox" wx:elif="{{data.type == 'checkbox'}}" bindchange="handleIsDone" icon="rectangle"></t-checkbox>
         <icon class="right-icon" wx:elif="{{data.type == 'icon'}}" type="success"></icon>
         <view class="right-calendar" wx:elif="{{data.type == 'calendar'}}">
           <t-calendar visible="{{calendarData.visible}}" bind:confirm="handleCalendarConfirm" bind:close="onCalendarClose" />
@@ -21,4 +21,5 @@
     </view>
     <t-divider></t-divider>
   </view>
+  <t-fab class="submit-icon" icon="logo-qq" text="提交" style="right: 32px; bottom: 64px;" bind:click="handleSubmit"></t-fab>
 </view>

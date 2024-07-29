@@ -3,6 +3,7 @@
     "t-divider": "tdesign-miniprogram/divider/divider",
     "t-input": "tdesign-miniprogram/input/input",
     "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
-    "t-calendar": "tdesign-miniprogram/calendar/calendar"
+    "t-calendar": "tdesign-miniprogram/calendar/calendar",
+    "t-fab": "tdesign-miniprogram/fab/fab"
   }
 }
