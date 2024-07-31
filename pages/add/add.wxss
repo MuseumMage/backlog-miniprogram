@@ -3,7 +3,7 @@ page {
   --td-input-vertical-padding: 0px;
   --td-checkbox-vertical-padding: 0px;
   --td-checkbox-icon-checked-color: green;
-
+  
   /* current page value */
   --detail-cell-padding: 15px;
   --full-view-size: 100%;

@@ -112,7 +112,14 @@ Page({
       wx.setStorageSync('backlogDataList', storedData);
       wx.showToast({
         title: '保存成功',
-        icon: 'success'
+        icon: 'success',
+        duration: 1500, // 设置显示时间
+        success: () => {
+          // 延迟一段时间后返回上一页
+          setTimeout(function () {
+            wx.navigateBack();
+          }, 1500); // 延迟时间与 wx.showToast 的 duration 保持一致
+        }
       });
     } catch (e) {
       wx.showToast({

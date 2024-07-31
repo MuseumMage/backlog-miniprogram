@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "t-row": "tdesign-miniprogram/row/row",
-    "t-col": "tdesign-miniprogram/col/col"
+    "t-fab": "tdesign-miniprogram/fab/fab",
+    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox"
   }
 }

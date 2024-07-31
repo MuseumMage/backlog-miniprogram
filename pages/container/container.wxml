@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="card" wx:for="{{formDataList}}" wx:for-item="data" wx:key="id">
+  <view class="card" wx:for="{{formDataList}}" wx:for-item="data" wx:key="id" bind:tap="handleEdit">
     <view class="card-title">
       {{data.title}}
     </view>
@@ -20,8 +20,9 @@
       </view>
       <view class="card-content">
         <view class="card-content-title">是否已完成</view>
-        <view class="card-content-content">{{data.isDone}}</view>
+        <t-checkbox value="{{data.isDone}}" icon="rectangle" borderless="true"></t-checkbox>
       </view>
     </view>
   </view>
+  <t-fab class="add-icon" icon="add" style="right: 64px; bottom: 64px;" button-props="{{addButton}}" bind:click="handleAddClick" draggable></t-fab>
 </view>

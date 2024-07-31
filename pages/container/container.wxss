@@ -1,4 +1,9 @@
 /* pages/container/container.wxss */
+page {
+  --td-checkbox-vertical-padding: 0px;
+  --td-checkbox-icon-checked-color: green;
+}
+
 .container {
   height: max-content; /* 设置容器高度为视口高度 */
   padding-top: 30px;
@@ -47,4 +52,13 @@
   color: grey;
   font-size: 14px;
   padding-bottom: 3px;
+}
+
+.card-content-content {
+  min-height: 16px;
+}
+
+.addButton {
+  width: 200px;
+  height: 200px;
 }

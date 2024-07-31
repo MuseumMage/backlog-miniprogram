@@ -5,65 +5,36 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // formDataList: [{
-    //   id: '',
-    //   title: '',
-    //   createdDate: '',
-    //   expirationDate: '',
-    //   isDone: false,
-    //   tag: '',
-    //   priority: '',
-    // }],
-    formDataList: [{
-      id: '1',
-      title: '2',
-      createdDate: '3',
-      expirationDate: '4',
-      isDone: false,
-      tag: '5',
-      priority: '6',
-    },
-    {
-      id: '1',
-      title: '2',
-      createdDate: '3',
-      expirationDate: '4',
-      isDone: false,
-      tag: '5',
-      priority: '6',
-    },
-    {
-      id: '1',
-      title: '2',
-      createdDate: '3',
-      expirationDate: '4',
-      isDone: false,
-      tag: '5',
-      priority: '6',
-    },
-    {
-      id: '10',
-      title: '20',
-      createdDate: '30',
-      expirationDate: '40',
-      isDone: false,
-      tag: '50',
-      priority: '60',
-    }],
+    formDataList: [],
+    addButton: {
+      size: 'large',
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.refreshData();
+  },
 
+  // 刷新页面加载
+  onShow(options) {
+    this.refreshData();
+  },
+
+  // 回调
+  handleAddClick() {
+    wx.navigateTo({
+      url: '../add/add',
+    })
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    this.refreshData();
   },
 
   /**
@@ -72,4 +43,18 @@ Page({
   onReachBottom() {
 
   },
+
+  // utils
+  refreshData() {
+    // 拉取数据
+    let storedData = wx.getStorageSync('backlogDataList') || [];
+    // 处理截止日期问题
+    storedData.forEach(item => {
+      if (item.expirationDate === "点击选择日期") {
+        item.expirationDate = "";
+      }
+    });
+    console.log(storedData);
+    this.setData({ formDataList: storedData });
+  }
 })
