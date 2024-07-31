@@ -1,1 +1,50 @@
 /* pages/container/container.wxss */
+.container {
+  height: max-content; /* 设置容器高度为视口高度 */
+  padding-top: 30px;
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+}
+
+/* 卡片容器样式 */
+.card {
+  width: 80%;
+  background-color: #ffffff; /* 卡片背景色 */
+  border-radius: 10px; /* 圆角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+  padding: 20px; /* 内边距 */
+  margin: 5px; /* 外边距 */
+}
+
+.card-title {
+  font-size: 20px;
+  padding-bottom: 15px;
+  font-weight: 500;
+}
+
+/* 卡片内每行文字的样式 */
+.card-line {
+  display: flex; /* 使用 flex 布局 */
+  justify-content: left; /* 左右对齐 */
+  font-size: 16px; /* 字体大小 */
+  margin-bottom: 10px; /* 每行文字的下边距 */
+}
+
+/* 最后一行文字不需要下边距 */
+.card-line:last-child {
+  margin-bottom: 0;
+}
+
+.card-content {
+  width: 50%;
+  display: inline-block;
+  white-space: nowrap; /* 防止文本换行 */
+  padding-bottom: 8px;
+}
+
+.card-content-title {
+  color: grey;
+  font-size: 14px;
+  padding-bottom: 3px;
+}

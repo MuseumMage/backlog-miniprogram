@@ -1,5 +1,27 @@
-
-<view class="container empty">
-  <text>张博测试</text>
-  <footer></footer>
+<view class="container">
+  <view class="card" wx:for="{{formDataList}}" wx:for-item="data" wx:key="id">
+    <view class="card-title">
+      {{data.title}}
+    </view>
+    <view class="card-line">
+      <view class="card-content">
+        <view class="card-content-title">创建时间</view>
+        <view class="card-content-content">{{data.createdDate}}</view>
+      </view>
+      <view class="card-content">
+        <view class="card-content-title">截止日期</view>
+        <view class="card-content-content">{{data.expirationDate}}</view>
+      </view>
+    </view>
+    <view class="card-line">
+      <view class="card-content">
+        <view class="card-content-title">标签</view>
+        <view class="card-content-content">{{data.tag}}</view>
+      </view>
+      <view class="card-content">
+        <view class="card-content-title">是否已完成</view>
+        <view class="card-content-content">{{data.isDone}}</view>
+      </view>
+    </view>
+  </view>
 </view>
