@@ -105,7 +105,8 @@ Page({
       console.log(storedData);
       // 将当前表单数据添加到存储数据中
       this.data.formData.createdDate = this.data.calendarData.createdDate;
-      this.data.formData.expirationDate = this.data.calendarData.expirationDate;
+      this.data.formData.expirationDate = this.data.calendarData.expirationDate === "点击选择日期" ? "" : this.data.calendarData.expirationDate;
+
       console.log(this.data.formData);
       storedData.push(this.data.formData);
       // 保存数据到本地存储

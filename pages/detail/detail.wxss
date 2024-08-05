@@ -1,1 +1,54 @@
-/* pages/detail/detail.wxss */
+page {
+  /* tdesign value */
+  --td-input-vertical-padding: 0px;
+  --td-checkbox-vertical-padding: 0px;
+  --td-checkbox-icon-checked-color: green;
+  
+  /* current page value */
+  --detail-cell-padding: 15px;
+  --full-view-size: 100%;
+}
+
+.container {
+  display: flex;
+  width: var(--full-view-size);
+  height: max-content;
+  padding: 30px;
+}
+
+.header {
+  width: var(--full-view-size);
+  margin-top: var(--detail-cell-padding);
+  margin-bottom: 20pt;
+  font-size: 17pt;
+  color: var(--td-brand-color, #0052d9);
+}
+
+.cell {
+  width: var(--full-view-size);
+}
+
+.row {
+  width: var(--full-view-size);
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--detail-cell-padding);
+}
+
+.left {
+  display: inline-block;
+  white-space: nowrap;
+  /* 防止文本换行 */
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  /* 内容靠右对齐 */
+  width: 100%;
+  /* 确保容器宽度为100%，或根据需要调整 */
+}
+
+.right-calendar, .right-text {
+  color: #888;
+}
