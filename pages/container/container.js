@@ -25,21 +25,9 @@ Page({
 
   // 回调
   handleAddClick() {
-    // wx.navigateTo({
-    //   url: '../add/add',
-    // })
-    
-    // test
-    this.pushItemData({
-        id: '',
-        title: '',
-        createdDate: '',
-        expirationDate: '',
-        isDone: false,
-        tag: '',
-        priority: '',
-      }
-    );
+    wx.navigateTo({
+      url: '../add/add',
+    })
   },
 
   handleEdit(event) {
@@ -48,7 +36,22 @@ Page({
     const cellDataStr = encodeURIComponent(JSON.stringify(cellData)); // 将对象转为字符串
     // 跳转到 detail 页面并传递数据
     wx.navigateTo({
-      url: `/pages/detail/detail?cellData=${cellDataStr}`
+      url: `/pages/detail/detail?cellData=${cellDataStr}&pageIndex=${index}`,
+      events: {
+        updateCellData: formdata => {
+          this.pullDataList();
+          let formDataListPending = this.data.formDataList;
+          formDataListPending[index] = formdata;
+          console.log("formdata", formdata);
+          console.log("formDataListPending[index]", formDataListPending[index]);
+          console.log("formDataListPending", formDataListPending);
+          this.setData({
+            formDataList: formDataListPending
+          });
+          console.log("this.data.formDataList", this.data.formDataList);
+          this.saveData();
+        }
+      },
     });
   },
 
@@ -97,5 +100,10 @@ Page({
 
   getItem(dataIndex) {  
     return this.data.formDataList[index];
-  }
+  },
+
+  // 存储数据
+  saveData() {
+    wx.setStorageSync('backlogDataList', this.data.formDataList);
+  },
 })

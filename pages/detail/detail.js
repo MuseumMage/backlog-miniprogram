@@ -36,13 +36,19 @@ Page({
       isDone: false,
       tag: '',
       priority: '',
-    }
+    },
+
+    // 当前页面的pageIndex
+    pageIndex: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    // 从 URL 参数中获取 pageIndex
+    this.data.pageIndex = options.pageIndex;
+
     // 从 URL 参数中获取并反序列化 cellData
     const cellDataStr = decodeURIComponent(options.cellData);
     const cellData = JSON.parse(cellDataStr);
@@ -57,10 +63,10 @@ Page({
           item.content = cellData.title;
           break;
         case '创建时间':
-          item.content = cellData.createdDate;
+          item.content = cellData.createdDate === "" ? "点击选择日期" : cellData.createdDate;
           break;
         case '截止日期':
-          item.content = cellData.expirationDate;
+          item.content = cellData.expirationDate === "" ? "点击选择日期" : cellData.createdDate;
           break;
         case '距离截止日':
           let dayInExpiration = "";
@@ -159,17 +165,16 @@ Page({
   // 点击提交
   handleSubmit() {
     try {
-      //debugger;
-      let storedData = wx.getStorageSync('backlogDataList') || [];
-      console.log(storedData);
       // 将当前表单数据添加到存储数据中
-      this.data.formData.createdDate = this.data.calendarData.createdDate;
+      this.data.formData.createdDate = this.data.calendarData.createdDate === "点击选择日期" ? "" : this.data.calendarData.createdDate;
       this.data.formData.expirationDate = this.data.calendarData.expirationDate === "点击选择日期" ? "" : this.data.calendarData.expirationDate;
 
-      console.log(this.data.formData);
-      storedData.push(this.data.formData);
-      // 保存数据到本地存储
-      wx.setStorageSync('backlogDataList', storedData);
+      console.log("提交formData数据", this.data.formData);
+      const eventChannel = this.getOpenerEventChannel();
+      eventChannel.emit('updateCellData', {
+        ...this.data.formData,
+      });
+
       wx.showToast({
         title: '保存成功',
         icon: 'success',
@@ -190,11 +195,6 @@ Page({
   },
 
   // utils
-  updateCalendar() {
-    this.updateCalendarData('创建时间', this.getCurrentDate());
-    this.updateCalendarData('截止日期', this.data.calendarData.expirationDate);
-  },
-
   updateCalendarData(script, newContent) {
     // 初始化创建时间和截止日期
     const scriptIndex = this.data.defaultListData.findIndex(item => item.script === script);
